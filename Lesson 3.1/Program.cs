@@ -81,6 +81,7 @@ namespace Lesson_3._1
             print(arMod.Length, arMod);
 
             Console.ReadKey();
+            
         }
     }
 }
