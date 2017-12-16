@@ -7,45 +7,57 @@ namespace Lesson_3._1
 {
     class Program
     {
-        static int[] bubble(int[] ar) {            
+        static int countOper = 0;
+
+        static int[] bubble(int[] ar) {
             for (int i = 0; i < ar.Length; i++)
             {
+                countOper ++;
+
                 for (int j = 0; j < ar.Length - 1; j++)
                 {
-                    int k = 0;
+                    countOper++;
 
+                    int k = 0;
+                    countOper++;
                     if (ar[j] > ar[j + 1])
                     {
+                        countOper++;
+
                         k = ar[j];
                         ar[j] = ar[j + 1];
                         ar[j + 1] = k;
+                        
                     }
                 }
             }
             return ar;
         }
 
+        static int countOperMod = 0;
+
         static int[] bubbleMod(int[] ar)
         {
-            for (int i = 0; i < ar.Length; i++)
+            
+            for (int i = 0; i < ar.Length - 1; i++)
             {
-                for (int j = 0; j < ar.Length - 1; j = j +1)
-                {
-                    int k = 0;
+                countOperMod++;
 
-                    if (ar[j] > ar[j + 1])
-                    {
-                        k = ar[j];
-                        ar[j] = ar[j + 1];
-                        ar[j + 1] = k;
-                        if (ar[j+1] > ar[j+2]) {
-                            k = ar[j+1];
-                            ar[j+1] = ar[j + 2];
-                            ar[j + 2] = k;
-                        }
-                    }
+                int k = 0;
+
+                if (ar[i] > ar[i + 1])
+                {
+                    countOperMod ++;
+
+                    k = ar[i];
+                    ar[i] = ar[i + 1];
+                    ar[i + 1] = k;
+
+                    bubbleMod(ar);
                 }
-            }
+
+            }    
+            
             return ar;
         }
 
@@ -73,12 +85,16 @@ namespace Lesson_3._1
             bubble(ar);
             print(ar.Length, ar);
             Console.WriteLine();
+            Console.WriteLine(countOper);
+
 
             print(arMod.Length, arMod);
             Console.WriteLine();
 
             bubbleMod(arMod);
             print(arMod.Length, arMod);
+            Console.WriteLine(countOperMod);
+
 
             Console.ReadKey();
             
